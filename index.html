@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade de Disciplinas</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      background: #f0f0f0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .table-wrapper {
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead tr {
+      background-color: #1e4d5e;
+      color: #fff;
+    }
+
+    thead th {
+      padding: 10px 12px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    thead th.center { text-align: center; }
+
+    tbody tr {
+      background-color: #fff;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    tbody tr:hover { background-color: #f7fbfc; }
+
+    tbody td {
+      padding: 10px 12px;
+      vertical-align: middle;
+      font-size: 13px;
+    }
+
+    tbody td.center { text-align: center; }
+
+    td.fase { text-align: center; width: 50px; }
+
+    td.disciplina { width: auto; }
+
+    .disc-name {
+      font-weight: bold;
+      color: #1a6080;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .disc-info {
+      display: flex;
+      gap: 30px;
+      color: #555;
+      font-size: 12.5px;
+    }
+
+    .disc-info .horario span { font-weight: bold; color: #333; }
+    .disc-info .sala span { font-weight: bold; color: #333; }
+    .disc-info .vagas { color: #555; }
+
+    td.modalidade { width: 140px; text-align: center; color: #555; }
+    td.turma { width: 70px; text-align: center; }
+    td.localizar { width: 90px; text-align: center; }
+    td.creditos { width: 80px; text-align: center; }
+
+    .pin-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.15s;
+    }
+    .pin-btn:hover { background: #fde8e0; }
+    .pin-btn svg { display: block; }
+    .pin-btn:focus { outline: 2px solid #1e4d5e; outline-offset: 2px; }
+
+    tfoot tr {
+      background-color: #1e4d5e;
+    }
+
+    tfoot td {
+      padding: 10px 12px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 13px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Fase</th>
+          <th>Disciplina</th>
+          <th class="center">Modalidade</th>
+          <th class="center">Turma</th>
+          <th class="center">Localizar</th>
+          <th class="center">Créditos</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td class="fase">1</td>
+          <td class="disciplina">
+            <span class="disc-name">1901012 - ÁLGEBRA</span>
+            <div class="disc-info">
+              <span class="horario"><span>Horário:</span> terça-feira as quatro aulas</span>
+              <span class="sala"><span>Sala:</span> 1.24.17/PRÉDIO 24</span>
+              <span class="vagas">Nº Vagas 100</span>
+            </div>
+          </td>
+          <td class="modalidade">Não Informada</td>
+          <td class="turma center">2</td>
+          <td class="localizar">
+            <button class="pin-btn" title="Localizar no mapa"
+              onclick="abrirMapa('1901012 - ÁLGEBRA','1.24.17/PRÉDIO 24','24','terça-feira as quatro aulas','2','100')">
+              <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 0C7.13 0 4 3.13 4 7c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#e53935"/>
+                <circle cx="11" cy="7" r="2.8" fill="#fff"/>
+              </svg>
+            </button>
+          </td>
+          <td class="creditos center">4,00</td>
+        </tr>
+
+        <tr>
+          <td class="fase">1</td>
+          <td class="disciplina">
+            <span class="disc-name">1902032 - PROGRAMAÇÃO PARA ENGENHARIA</span>
+            <div class="disc-info">
+              <span class="horario"><span>Horário:</span> quarta-feira as quatro aulas</span>
+              <span class="sala"><span>Sala:</span> 1.07.09/PRÉDIO 07</span>
+              <span class="vagas">Nº Vagas 40</span>
+            </div>
+          </td>
+          <td class="modalidade">Não Informada</td>
+          <td class="turma center">8</td>
+          <td class="localizar">
+            <button class="pin-btn" title="Localizar no mapa"
+              onclick="abrirMapa('1902032 - PROGRAMAÇÃO PARA ENGENHARIA','1.07.09/PRÉDIO 07','07','quarta-feira as quatro aulas','8','40')">
+              <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 0C7.13 0 4 3.13 4 7c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#e53935"/>
+                <circle cx="11" cy="7" r="2.8" fill="#fff"/>
+              </svg>
+            </button>
+          </td>
+          <td class="creditos center">4,00</td>
+        </tr>
+
+        <tr>
+          <td class="fase">1</td>
+          <td class="disciplina">
+            <span class="disc-name">2001012 - JORNADA UNIVERSITÁRIA</span>
+            <div class="disc-info">
+              <span class="horario"><span>Horário:</span> sexta-feira as quatro aulas</span>
+              <span class="sala"><span>Sala:</span> Local indefinido/Sala de Aula Normal</span>
+              <span class="vagas">Nº Vagas 600</span>
+            </div>
+          </td>
+          <td class="modalidade">Não Informada</td>
+          <td class="turma center">1</td>
+          <td class="localizar">
+            <button class="pin-btn" title="Localizar no mapa"
+              onclick="abrirMapa('2001012 - JORNADA UNIVERSITÁRIA','Local indefinido/Sala de Aula Normal','','sexta-feira as quatro aulas','1','600')">
+              <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 0C7.13 0 4 3.13 4 7c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#e53935"/>
+                <circle cx="11" cy="7" r="2.8" fill="#fff"/>
+              </svg>
+            </button>
+          </td>
+          <td class="creditos center">4,00</td>
+        </tr>
+
+        <tr>
+          <td class="fase">1</td>
+          <td class="disciplina">
+            <span class="disc-name">2201032 - ENGENHARIA DE REQUISITOS</span>
+            <div class="disc-info">
+              <span class="horario"><span>Horário:</span> quinta-feira as quatro aulas</span>
+              <span class="sala"><span>Sala:</span> 1.22.28/PRÉDIO 22</span>
+              <span class="vagas">Nº Vagas 40</span>
+            </div>
+          </td>
+          <td class="modalidade">Não Informada</td>
+          <td class="turma center">6</td>
+          <td class="localizar">
+            <button class="pin-btn" title="Localizar no mapa"
+              onclick="abrirMapa('2201032 - ENGENHARIA DE REQUISITOS','1.22.28/PRÉDIO 22','22','quinta-feira as quatro aulas','6','40')">
+              <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 0C7.13 0 4 3.13 4 7c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#e53935"/>
+                <circle cx="11" cy="7" r="2.8" fill="#fff"/>
+              </svg>
+            </button>
+          </td>
+          <td class="creditos center">4,00</td>
+        </tr>
+
+        <tr>
+          <td class="fase">1</td>
+          <td class="disciplina">
+            <span class="disc-name">2201052 - PRÁTICAS DE ENGENHARIA</span>
+            <div class="disc-info">
+              <span class="horario"><span>Horário:</span> segunda-feira as quatro aulas</span>
+              <span class="sala"><span>Sala:</span> 1.24.10/PRÉDIO 24</span>
+              <span class="vagas">Nº Vagas 220</span>
+            </div>
+          </td>
+          <td class="modalidade">Não Informada</td>
+          <td class="turma center">1</td>
+          <td class="localizar">
+            <button class="pin-btn" title="Localizar no mapa"
+              onclick="abrirMapa('2201052 - PRÁTICAS DE ENGENHARIA','1.24.10/PRÉDIO 24','24','segunda-feira as quatro aulas','1','220')">
+              <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 0C7.13 0 4 3.13 4 7c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#e53935"/>
+                <circle cx="11" cy="7" r="2.8" fill="#fff"/>
+              </svg>
+            </button>
+          </td>
+          <td class="creditos center">4,00</td>
+        </tr>
+
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="6">Total de créditos: &nbsp;20</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+<script>
+  function abrirMapa(disciplina, sala, predio, horario, turma, vagas) {
+    const p = new URLSearchParams({ disciplina, sala, predio, horario, turma, vagas });
+    window.open('mapa.html?' + p.toString(), '_blank');
+  }
+</script>
+</body>
+</html>
